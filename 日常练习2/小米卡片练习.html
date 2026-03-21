@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小米卡片</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+           box-sizing: border-box; /* padding 和 border 会向内挤压内容区域，总尺寸固定 */
+
+        }
+        .box{
+            width: 234px;
+            height: 300px;
+            text-align: center;
+            margin: 100px auto;
+            background-color: #fff;
+            transition: all 0.5s;
+        }
+        .box:hover{
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        body{
+            background-color: #ccc;
+        }
+        .box img{
+            width: 160px;
+            height: 160px;
+            margin-top: 20px;  /* img是行内块元素，所以可以设置margin，不会塌陷 */
+        }
+        .box .topic{
+            font-size: 14px;
+            font-weight: 400;
+            color: #333;
+            margin-top: 18px;
+        }
+        .box .description{
+            color: #b0b0b0;
+            font-size: 12px;
+            /* 单行文本溢出省略 */
+           white-space: nowrap;      /*  不换行 */
+           overflow: hidden;         /* 隐藏溢出 */
+           text-overflow: ellipsis;  /* 显示 ... */
+           padding: 0 20px;
+            /* 多行文本溢出省略 
+           display: -webkit-box; 旧版弹性盒子布局 
+            -webkit-line-clamp: 2;限制显示行数 
+            -webkit-box-orient: vertical;文本垂直排列 
+            overflow: hidden;
+            text-overflow: ellipsis; */
+        }
+        .box .price{
+            color: #ff6700;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .box del{
+            color: #b0b0b0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="mi.webp" alt="商品图片">
+        <p class="topic">Xiaomi Buds 5</p>
+        <p class="description">舒适无感佩戴 | 高通全链路无损音频不啦不啦不啦不啦不啦111111111111111111111111111111111111111111111111111111111111111111111111111</p>
+        <p class="price">
+            <!-- 必须用行内元素，不能换行显示 -->
+            <span>659元</span>
+            <del >699元</del>
+        </p>
+    </div>
+    
+</body>
+</html>
