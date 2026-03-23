@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .container {
+            display: flex;/* 让盒子里面显示flex布局 
+            }
+
+            .left {
+            width: 200px;
+            background: #f66;
+            }
+
+            .right {
+            flex: 1;/* 让盒子自适应 ，也就是占满剩余空间
+            background: #6cf;
+            } */
+            .container {
+            display: grid;/* 设置网格布局的列，分为两列 */
+            grid-template-columns: 200px 1fr; /*用于定义网格中的列轨道。 第一列固定宽度为200px，第二列占据剩余空间（1fr表示1个分数单位） */
+            }
+
+            .left {
+            background: #f66;
+        }
+
+            .right {
+            background: #6cf;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+  <div class="left">左侧固定 200px</div>
+  <div class="right">右侧自适应</div>
+</div>
+</body>
+</html>

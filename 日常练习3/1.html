@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+  overflow: hidden; /* 清除浮动，也可用 clearfix */
+}
+
+.left {
+  float: left;
+  width: 200px;
+  background: #f66;
+}
+
+.right {
+  overflow: hidden; /* 触发BFC，防止与浮动元素重叠 */
+  background: #6cf;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+  <div class="left">左侧固定 200px</div>
+  <div class="right">右侧自适应</div>
+</div>
+</body>
+</html>.right {
+  overflow: hidden; /* 触发BFC，防止与浮动元素重叠 */
+  background: #6cf;
+}
+.right {
+  overflow: hidden; /* 触发BFC，防止与浮动元素重叠 */
+  background: #6cf;
+}

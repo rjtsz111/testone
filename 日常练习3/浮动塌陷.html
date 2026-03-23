@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 当子元素 .child 被浮动后，父元素 .parent 的高度不会自动扩展以包含 .child，而是折叠了，导致其背景色无法完全显示,而原本在下面的box，因为父盒子高度为0，而与child元素发生重叠。
+解决浮动塌陷的方法有很多，包括清除浮动、使用 flexbox 布局、使用 grid 布局等。 -->
+    <style>
+        .parent {
+          background-color: rgb(204, 204, 204);
+        }
+        /* 2.伪类元素清除浮动 使用： after 设置一个 block 级别的元素 */
+        /* .parent::after {
+          content: "";
+          display: block;
+          clear: both;
+        } */
+         /* 3.利用 BFC 清除浮动 在父元素上面添加 overflow：hidden */
+         /* .parent {
+              background-color: rgb(204, 204, 204);
+              overflow: hidden;
+              } */
+         /* 4.使用 br  标签 */
+        .child {
+          width: 100px;
+          height: 100px;
+          background-color: red;
+          float: left;
+          }
+        .box {
+          width: 300px;
+          height: 100px;
+          background-color: rgba(0, 255, 76, 0.568);
+          /* 1.clear: both; */
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+  <div class="child"></div>
+</div>
+<div class="box"></div>
+</body>
+</html>
