@@ -1,0 +1,31 @@
+实现：
+一行 3 个元素，间距固定，两侧贴边
+回答：
+● 用哪个属性？
+● 为什么不用 margin？
+
+1.一般用 display: flex + justify-content: space-between。
+如果是三等分布局，也可以配合子项宽度设置，比如：
+.parent {
+  display: flex;
+  justify-content: space-between;
+}
+.child {
+  width: 100px; /* 或者 flex: 0 0 100px */
+}
+justify-content: space-between 的特点是：
+
+第一个元素贴左边
+最后一个元素贴右边
+中间元素平均分布
+间距由容器剩余空间自动计算
+2.为什么不用 margin？
+因为 margin 不是最适合做这种“整体分布”的方式，主要有几个问题：
+需要手动控制每个元素的边距:比如给中间两个元素加 margin-right,容易写死，不够灵活最后一项要额外处理
+如果都加右边距，最后一个元素会多出空隙,还得单独去掉最后一个的 margin,不适合自适应
+容器宽度变化时，margin 不会自动帮你“均匀分配剩余空间”,而 justify-content: space-between 会自动处理
+
+面试时可以这样回答
+这种场景我一般会用 Flex 布局，父容器设置 display: flex，再用 justify-content: space-between。
+它能让第一个元素贴左、最后一个元素贴右，中间间距由剩余空间自动分配。
+不用 margin 的原因是 margin 需要手动给每个元素设置间距，还要处理最后一个元素的空隙，维护起来不如 Flex 的整体分布方式自然。

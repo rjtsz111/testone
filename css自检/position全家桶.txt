@@ -1,0 +1,42 @@
+自检 8：Flex 基础概念
+回答：
+1. 主轴 / 交叉轴
+2. justify-content vs align-items
+3. flex: 1 到底是什么意思？
+
+
+1. position 全家桶概念
+static:默认定位方式。
+元素按照正常文档流进行排列，top / right / bottom / left 对它不生效。
+
+relative:相对定位。
+元素仍然占据原来的文档流位置，只是视觉上相对自己原来的位置偏移。
+它本身不会脱离文档流，原位置还保留。
+
+absolute:绝对定位。
+元素会脱离文档流，并相对于最近的、position 不是 static 的祖先元素进行定位。
+如果找不到这样的祖先，就相对于页面初始包含块定位。
+
+fixed:固定定位。
+元素脱离文档流，并相对于浏览器视口定位，不随页面滚动而移动。
+
+sticky:粘性定位。
+它在正常文档流中表现得像 relative，当滚动到某个阈值时，会表现得像 fixed 一样“粘住”。
+常用于吸顶导航、表头固定等场景。
+
+2. 追问：absolute 相对于谁定位？
+absolute 默认会相对于最近的、非 static 定位祖先元素定位。
+如果没有这样的祖先，就会相对于初始包含块，通常可以理解为页面根元素或者视口相关区域。
+
+3. 追问：如何改变它的参考系？
+只要给它的某个父级或更外层祖先元素设置：position: relative;
+或者 absolute / fixed / sticky 都可以，只要不是 static。
+这样 absolute 就会以这个最近的定位祖先作为参考系。
+
+面试口述版
+static 是默认定位，元素按正常文档流排布。
+relative 是相对定位，元素本身还占位，只是相对自己原来的位置偏移。
+absolute 是绝对定位，会脱离文档流，相对于最近的非 static 祖先定位。
+fixed 是固定定位，相对于视口定位，不随滚动变化。
+sticky 是粘性定位，平时像 relative，滚动到一定位置后像 fixed 一样吸附。
+absolute 的参考系可以通过给父级设置 position: relative 来改变。

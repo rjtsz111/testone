@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      display: flex;
+    }
+
+    .left, .right {
+      width: 200px;
+      flex: 0 0 200px;/* 这个 flex 项的基础宽度是 200px，既不放大也不缩小，始终保持 200px。 */
+      background: #d9f0ff;
+    }
+
+    .center {
+      flex: 1;
+      background: #f1f1f1;
+    }
+    /* .center { order: 2; flex: 1; }order属性用于指定 flex 项的排列顺序，默认值是 0。 值越小顺序越往前
+      .left   { order: 1; width: 200px; flex: 0 0 200px; }
+      .right  { order: 3; width: 200px; flex: 0 0 200px; } */
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left">左侧栏</div>
+    <div class="center">中间内容</div>
+    <div class="right">右侧栏</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS 三角形示例</title>
+  <style>
+    /* 朝向哪边就用另外一边设置颜色 ，比如向上就要用border-bottom*/
+    .triangle-up {
+      width: 0;
+      height: 0;
+      border-left: 50px solid transparent;/* 50px是底边左半边的长度，transparent是透明颜色 */
+      border-right: 50px solid transparent;/* 50px是底边右半边的长度，transparent是透明颜色 */
+      border-bottom: 100px solid red;/* 100px是底边总长度 */
+      margin: 100px auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="triangle-up"></div>
+</body>
+</html>

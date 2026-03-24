@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>条形加载 Loading</title>
+  <style>
+    /* 页面居中显示 */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f5f5f5;
+    }
+
+    /* 条形容器 */
+    .loading-bars {
+      display: flex;         /* 横向排列条形 */
+      gap: 6px;              /* 条与条之间的间距 */
+      align-items: flex-end; /* 让条形底部对齐 */
+      height: 40px;          /* 容器高度，保证条形有伸缩空间 */
+    }
+
+    /* 单个条形 */
+    .bar {
+      width: 4px;            /* 条形宽度 */
+      height: 20px;          /* 默认高度 */
+      background: #333;      /* 条形颜色 */
+      border-radius: 2px;    /* 让边角稍微圆润一点 */
+      animation: stretch 1s infinite ease-in-out; /* 伸缩动画 */
+    }
+
+    /* 为每个条形设置不同的延迟，让动画有波动感 */
+    .bar:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .bar:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+
+    .bar:nth-child(3) {
+      animation-delay: 0.2s;
+    }
+
+    .bar:nth-child(4) {
+      animation-delay: 0.3s;
+    }
+
+    .bar:nth-child(5) {
+      animation-delay: 0.4s;
+    }
+
+    /* 伸缩动画 */
+    @keyframes stretch {
+      0%, 40%, 100% {
+        transform: scaleY(0.6); /* 高度缩放至 60%，条形变矮 */
+      }
+      20% {
+        transform: scaleY(1.8); /* 变高 */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="loading-bars">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>父元素设为弹性盒子,水平:justify-content: center,垂直:align-items: center</title>
+</head>
+<style>
+  .parent {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    border: 1px solid #ccc;
+  }
+
+  .child {
+   background: pink;
+  }
+</style>
+<body>
+  <div class="parent">
+    <div class="child">居中内容，宽高未知</div>
+  </div>
+</body>
+</html>

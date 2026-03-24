@@ -1,0 +1,39 @@
+其实就是水平垂直居中
+这三个方法不同的的就是居中方式不一样
+最好加上z-index
+z-index 一般是给遮罩层，不是给单独的弹窗内容。
+因为真正负责盖住页面的是遮罩层整个容器。
+
+方案 1：position + transform
+.mask {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  z-index: 1000;
+}
+
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+方案 2：flex
+.mask {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+方案 3：grid
+.mask {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+}

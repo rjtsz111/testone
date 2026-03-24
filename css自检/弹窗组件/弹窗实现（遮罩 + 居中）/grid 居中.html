@@ -1,0 +1,88 @@
+<!-- 遮罩层设置为 display: grid
+使用 place-items: center 直接实现水平 + 垂直居中 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>弹窗示例 - grid 居中</title>
+  <style>
+    /* 页面基础样式 */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      background: #f5f5f5;
+    }
+
+    /* 遮罩层 */
+    .mask {
+      position: fixed;                  /* 固定定位 */
+      inset: 0;                         /* 覆盖整个视口 */
+      background: rgba(0, 0, 0, 0.5);   /* 半透明遮罩 */
+
+      display: grid;                    /* 开启 grid 布局 */
+      place-items: center;              /* 子元素水平 + 垂直同时居中 */
+    }
+
+    /* 弹窗主体 */
+    .modal {
+      width: 360px;
+      padding: 24px;
+      box-sizing: border-box;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+    }
+
+    .modal p {
+      margin: 0 0 20px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    .btn {
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .btn-cancel {
+      background: #eee;
+      color: #333;
+    }
+
+    .btn-confirm {
+      background: #1677ff;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <!-- 遮罩层 -->
+  <div class="mask">
+    <!-- 弹窗 -->
+    <div class="modal">
+      <h2>提示</h2>
+      <p>这是一个使用 grid 实现居中的弹窗。</p>
+      <div class="actions">
+        <button class="btn btn-cancel">取消</button>
+        <button class="btn btn-confirm">确认</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

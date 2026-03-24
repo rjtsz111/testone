@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            padding: 0 200px; /* 左右留出空间 */
+            overflow: hidden;
+            }
+
+        .center {
+            float: left;
+            width: 100%;
+            background: #f1f1f1;
+            }
+
+        .left {
+            float: left;
+            width: 200px;
+            margin-left: -100%;/* 先把元素拉回到对应行的左边 */
+            position: relative; 
+            left: -200px;/* 再视觉上移到真正左侧位置，从左向右偏移-200px（往左走200px） */
+            background: #d9f0ff;
+            }
+
+        .right {
+            float: left;
+            width: 200px;
+            margin-left: -200px;/* 先把元素拉回到对应行的左边 */
+            position: relative; 
+            right: -200px;/* 再视觉上移到真正右侧位置，从右向左偏移-200px（往右走200px） */
+            background: #ffe4d6;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="center">中间内容</div>
+        <div class="left">左侧栏</div>
+        <div class="right">右侧栏</div>
+    </div>
+</body>
+</html>

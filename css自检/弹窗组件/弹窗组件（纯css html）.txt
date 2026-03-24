@@ -1,0 +1,144 @@
+弹窗组件（纯 CSS + HTML）
+要求：
+● 居中
+● 遮罩层
+● 不随页面滚动
+● 内容超出可滚动
+● 不使用 JS 计算位置
+验收点：
+● 定位方案
+● 层级控制
+● 可维护性
+一、推荐方案：fixed + flex + 遮罩层
+这是最常见、最稳的纯 CSS 弹窗实现方式。
+
+二、这个方案怎么满足要求
+1. 居中
+使用：
+display: flex;
+align-items: center;
+justify-content: center;
+这是最简单的居中方式，不需要计算位置，也不需要 top: 50% + transform。
+
+2. 遮罩层
+遮罩层就是 .modal-mask：
+position: fixed;
+inset: 0;等价于 top/right/bottom/left: 0
+background: rgba(0,0,0,.5);
+作用：
+覆盖整个视口
+阻止用户继续操作页面内容
+形成弹窗层级上的背景遮罩
+
+3. 不随页面滚动
+关键是：
+position: fixed;
+fixed 相对于视口定位，所以弹窗和遮罩层会固定在屏幕上，不会随着页面滚动而移动。
+
+4. 内容超出可滚动
+给弹窗主体限制最大高度：max-height: 80vh;
+再让内容区域滚动：
+.modal-body {
+  overflow: auto;
+  flex: 1;
+}
+这样：
+弹窗整体不会超出屏幕，内容过多时只滚动内容区，头部和底部保持固定
+
+三、层级控制
+层级主要靠 z-index。
+.modal-mask {
+  z-index: 1000;
+}
+如果页面中还有其他固定定位元素，比如：
+顶部导航，悬浮按钮，toast，抽屉
+就需要统一管理层级，避免互相盖住。
+建议
+可以约定一个层级体系，比如：
+
+header: 100
+dropdown: 300
+mask/modal: 1000
+toast: 2000
+这样项目里更可控。
+
+四、可维护性怎么考虑
+1. 结构清晰
+建议弹窗结构固定为：
+
+modal-mask
+  modal
+    modal-header
+    modal-body
+    modal-footer
+这样职责明确，后期扩展方便。
+
+2. 样式分层
+把弹窗样式拆清楚：
+
+遮罩层
+弹窗容器
+标题区
+内容区
+底部操作区
+避免所有样式都写在一个类里。
+
+3. 统一弹窗规格
+建议项目里固定：
+
+最大宽度
+最大高度
+圆角
+阴影
+z-index 规范
+这样多个弹窗样式一致，维护成本更低。
+
+4. 可复用性
+如果以后做多个弹窗，可以只替换：
+
+标题
+内容
+按钮
+外层结构保持一致，复用性会很高。
+
+五、如果要“纯 CSS 控制显示/隐藏”
+如果你想做到不依赖 JS 展示弹窗，可以用 :target 或 checkbox 技巧。
+
+方案 1：:target
+HTML
+<a href="#modal" class="open-btn">打开弹窗</a>
+
+<div id="modal" class="modal-mask">
+  <div class="modal">
+    <a href="#" class="close-btn">关闭</a>
+    <div class="modal-body">弹窗内容</div>
+  </div>
+</div>
+CSS
+.modal-mask {
+  display: none;
+}
+
+.modal-mask:target {
+  display: flex;
+}
+优点
+完全不用 JS
+适合简单 demo
+缺点
+URL 会变化
+交互不够优雅
+复杂项目不够灵活
+方案 2：checkbox + label
+也能纯 CSS 控制开关，但结构会更绕一些。
+
+六、面试式总结回答
+你可以这样说：
+
+我会用 position: fixed 配合遮罩层实现弹窗，遮罩层使用 inset: 0 铺满视口，弹窗通过 flex 的 align-items:center 和 justify-content:center 实现居中，这样不需要 JS 计算位置。
+弹窗内容区设置 max-height 和 overflow:auto，保证内容超出时内部滚动。
+层级上通过 z-index 控制，遮罩层和弹窗统一放在高层级容器里，避免被页面其他元素覆盖。
+在可维护性上，我会把弹窗拆成遮罩、容器、头部、内容、底部几个部分，方便复用和统一管理。
+
+七、一句话方案
+position: fixed + flex 居中 + max-height/overflow 滚动 + z-index 层级控制 是纯 CSS 弹窗最稳的实现方式。

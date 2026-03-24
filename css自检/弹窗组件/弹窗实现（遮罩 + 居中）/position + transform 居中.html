@@ -1,0 +1,92 @@
+<!-- 外层遮罩 mask 固定铺满全屏
+内层弹窗 modal 通过 left: 50%、top: 50% 定位到中心点
+再用 transform: translate(-50%, -50%) 把弹窗自身宽高的一半往回移，从而真正居中 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>弹窗示例 - position + transform</title>
+  <style>
+    /* 页面基础样式，仅用于演示 */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      background: #f5f5f5;
+    }
+
+    /* 遮罩层：覆盖整个视口 */
+    .mask {
+      position: fixed;        /* 固定定位，始终覆盖屏幕 */
+      inset: 0;               /* 等价于 top/right/bottom/left = 0 */
+      background: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
+    }
+
+    /* 弹窗主体 */
+    .modal {
+      /* 传统做法 */
+      position: absolute;     /* 相对于 mask 定位 */
+      left: 50%;              /* 左边距定位到容器中间 */
+      top: 50%;               /* 上边距定位到容器中间 */
+      transform: translate(-50%, -50%); /* 自身向左、向上移动一半宽高，实现真正居中 */
+      /* 下面都是非必须内容 */
+      width: 360px;
+      padding: 24px;
+      box-sizing: border-box; /* padding 不会撑大总宽度 */
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+    }
+
+    .modal p {
+      margin: 0 0 20px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    .btn {
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .btn-cancel {
+      background: #eee;
+      color: #333;
+    }
+
+    .btn-confirm {
+      background: #1677ff;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <!-- 遮罩层 -->
+  <div class="mask">
+    <!-- 弹窗 -->
+    <div class="modal">
+      <h2>提示</h2>
+      <p>这是一个使用 position + transform 实现居中的弹窗。</p>
+      <div class="actions">
+        <button class="btn btn-cancel">取消</button>
+        <button class="btn btn-confirm">确认</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

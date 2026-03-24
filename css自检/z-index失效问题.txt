@@ -1,0 +1,37 @@
+z-index 失效问题
+回答：
+1. 什么是层叠上下文？
+2. 哪些属性会创建新的层叠上下文？
+3. 为什么 z-index 有时“怎么调都没用”？
+
+1.层叠上下文（stacking context）可以理解为一个独立的“层级空间”。
+在同一个层叠上下文里，元素才会真正按照 z-index 去比较谁在上面；
+但如果处在不同的层叠上下文中，z-index 只能在各自的上下文内部比较，不能跨上下文直接比大小。
+你可以把它理解成：
+每个层叠上下文像一个“盒子”,盒子内部自己排层级,盒子之间的层级由父级上下文决定
+
+2. 哪些属性会创建新的层叠上下文？
+常见的有：
+1）position + z-index
+position 不是 static，并且 z-index 不是 auto
+会创建新的层叠上下文
+例如：position: relative;z-index: 1;
+2）opacity < 1
+例如：opacity: 0.9;
+3）transform
+例如：transform: translateX(0);
+4）filter
+例如：filter: blur(2px);
+5）perspective
+6）mix-blend-mode 不是 normal
+7）isolation: isolate
+8）will-change 某些属性
+比如 transform、opacity 等
+9）position: fixed / sticky
+它们在很多场景下也会形成新的层叠上下文
+
+3.z-index 失效通常不是它本身没用，而是层叠上下文的问题。
+CSS 里的层级比较不是全局统一的，而是分层叠上下文进行的。
+如果两个元素不在同一个层叠上下文里，z-index 只能在各自上下文内部比较，不能跨层比较。
+另外，z-index 一般需要配合非 static 定位使用。
+所以遇到 z-index 怎么调都没用时，我通常会先检查父级是否创建了新的层叠上下文，比如 transform、opacity、position + z-index 等。

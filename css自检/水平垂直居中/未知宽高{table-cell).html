@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 父元素不是普通盒子，而是一个“表格里的格子”。
+       格子里的内容默认按单元格规则对齐。
+       于是我们利用这个规则，让内容在中间。 */
+    .parent {
+      display: table-cell;
+      width: 300px;
+      height: 300px;
+      vertical-align: middle; /* 控制行内元素、单元格内容在垂直方向上的对齐方式。 */
+      text-align: center; /* 水平方向上居中对齐 */
+      border: 1px solid #ccc;
+    }
+/* 如果子元素是 inline-block,它就像一段文字或一个小盒子：
+   可以被 text-align: center 居中,自身宽高也能设置,比纯行内元素更灵活
+   所以很多 table-cell 居中方案都会让子元素变成 inline-block。 */
+    .child {
+      display: inline-block; /* 因为普通行内元素默认会占满一整行，不方便像文字一样被居中。 */
+      background: pink;
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <div class="child">居中内容，宽高未知</div>
+</div>
+</body>
+</html>
