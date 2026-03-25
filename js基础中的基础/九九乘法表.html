@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+for (let x = 1; x <= 9; x++) {
+  let row = "";
+  for (let y = 1; y <= x; y++) {
+    row += `${y}*${x}=${y * x} `;/* 如果你要的是九九乘法表,应该把一行的内容先拼起来，最后再输出这一整行。 */
+  }
+  console.log(row);
+}
+  </script>
+</body>
+</html>

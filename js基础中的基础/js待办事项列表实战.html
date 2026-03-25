@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>JS 待办事项列表</title>
+  <style>
+    .container {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      /* 鼠标指针样式为手型 */
+    }
+
+    li.completed {
+      text-decoration: line-through;
+      color: #888;
+    }
+
+    .delete-btn {
+      color: red;
+      cursor: pointer;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+
+    /* 选择所有 type="text" 的 input 输入框。 */
+    input[type="text"] {
+      padding: 8px;
+      width: 70%;
+      margin-right: 10px;
+    }
+
+    button {
+      padding: 8px 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>我的待办事项</h2>
+
+    <div>
+      <input type="text" id="taskInput" placeholder="输入新的待办事项..."><!-- placeholder提示框内容 -->
+      <button id="addTaskBtn" disabled>添加</button><!-- disable禁用，当js触发之后才能用 -->
+    </div>
+
+    <ul id="taskList">
+      <li>22</li>
+    </ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
