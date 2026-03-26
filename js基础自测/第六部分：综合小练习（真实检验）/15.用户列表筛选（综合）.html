@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let users = [
+            { name: "Tom", age: 17 },
+            { name: "Jerry", age: 20 },
+            { name: "Lucy", age: 16 }
+        ]
+        for (let user of users) {
+            if (user.age >= 18) {
+                console.log(user.name)
+            }
+        }
+        users.forEach(function(user){
+            if (user.age >= 18) {
+                console.log(user.name)
+            }
+        })
+    </script>
+</body>
+
+</html>
