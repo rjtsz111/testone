@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小米风格搜索框组件</title>
+    <style>
+        /* ---------- 全局重置 ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 清除列表默认样式 */
+        ul {
+            list-style: none;
+        }
+
+        /* 主体容器: 相对定位用于下拉列表定位 */
+        .mi {
+            position: relative;
+            width: fit-content;
+            margin: 50px auto;
+            /* 仅用于演示居中，实际可根据需求调整 */
+        }
+
+        /* 搜索输入框样式 */
+        .mi input {
+            width: 223px;
+            height: 48px;
+            padding: 0 10px;
+            font-size: 14px;
+            line-height: 48px;
+            border: 1px solid #e0e0e0;
+            outline: none;
+            transition: all 0.2s ease;
+            background-color: #fff;
+        }
+
+        /* 输入框聚焦时高亮边框 (小米橙) */
+        .mi input:focus {
+            border: 1px solid #ff6700;
+        }
+
+        /* 可选类：用于JS动态添加，但仅用:focus也可以满足核心交互，保留类以备额外功能 */
+        .mi .search {
+            border: 1px solid #ff6700;
+        }
+
+        /* 结果列表容器 - 默认隐藏，聚焦时显示 (通过CSS + JS组合，确保完全符合需求) 
+           同时保留绝对定位，且样式严格遵循截图合并 */
+        .result-list {
+            display: none;
+            /* 初始隐藏，等待焦点事件 */
+            position: absolute;
+            left: 0;
+            top: 48px;
+            width: 223px;
+            border: 1px solid #ff6700;
+            border-top: 0;
+            background: #fff;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        /* 下拉列表项中的链接样式 */
+        .result-list a {
+            display: block;
+            padding: 6px 15px;
+            font-size: 12px;
+            color: #424242;
+            text-decoration: none;
+            transition: background-color 0.1s;
+        }
+
+        /* 鼠标悬停效果：浅灰背景 */
+        .result-list a:hover {
+            background-color: #eee;
+        }
+
+        /* 简单响应式微调，保持样式稳定 */
+        @media (max-width: 480px) {
+            .mi {
+                margin: 20px auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mi">
+        <!-- 搜索输入框 placeholder="小米笔记本" 完全参照截图 -->
+        <input type="search" id="searchInput" placeholder="小米笔记本" autocomplete="off">
+        <!-- 结果列表: 结构与截图完全一致，包含指定商品条目 -->
+        <ul class="result-list" id="resultList">
+            <li><a href="#">全部商品</a></li>
+            <li><a href="#">小米11</a></li>
+            <li><a href="#">小米10S</a></li>
+            <li><a href="#">小米笔记本</a></li>
+            <li><a href="#">小米手机</a></li>
+            <li><a href="#">黑鲨4</a></li>
+            <li><a href="#">空调</a></li>
+        </ul>
+    </div>
+    <script>
+        // 获取元素
+        const input = document.querySelector('[type=search]')
+        const ul = document.querySelector('.result-list')
+        // 监听事件 获得焦点
+        input.addEventListener('focus', function () {
+            // 把ul显示出来
+            ul.style.display = 'block' /* block是显示的意思 */
+            input.classList.add('search')
+        })
+        input.addEventListener('blur', function () {
+            // 把ul显示出来
+            ul.style.display = 'none'
+            input.classList.remove('search')
+        })
+    </script>
+
+</body>
+
+</html>
